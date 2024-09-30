@@ -1,0 +1,79 @@
+/* ปรับรูปแบบพื้นฐานของหน้าเว็บ */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('http://localhost/por/aic/im/37.png') no-repeat center center fixed;
+    background-size: cover;
+    /* ปรับขนาดภาพให้เต็มหน้าจอ */
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+
+
+h1 {
+    text-align: center;
+    color: #010911;
+    margin: 20px;
+    font-size: 6vw;
+}
+
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.content a {
+    display: block;
+    width: 80%;
+    max-width: 90%;
+    margin: 10px 0;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 20px;
+    border: 3px solid rgb(0 0 0 / 32%);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    font-size: vw;
+    font-weight: bold;
+
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+.content a:hover {
+    opacity: 0.9;
+    color: #0b0a0a;
+    background-color: #f1f2f9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.blood {
+    background-color: #dc3545;
+}
+
+.bone {
+    background-color: #ffc107;
+}
+
+.venom {
+    background-color: #258dcb;
+}
+
+.condi {
+    background-color: #28a745;
+}
