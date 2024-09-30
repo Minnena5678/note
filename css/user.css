@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #8dacdc;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 20px;
+}
+
+.container {
+    background-color: #efecff;
+    border-radius: 20px;
+   
+    padding: 40px;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    animation: bounce 0.5s;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    input[type="email"], input[type="password"], input[type="text"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    button::after {
+        font-size: 18px;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #121212;
+    text-shadow: 1px 1px 2px rgb(253 244 248 / 60%);
+}
+
+label {
+    display: block;
+    text-align: left; 
+    margin: 15px 0 5px;
+    font-size: 18px;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+/* ตำแหน่งของไอคอน toggle (ลูกตา) */
+.toggle-password {
+    position: absolute;
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    cursor: pointer; 
+}
+
+/* ขนาดไอคอนลูกตาในช่องรหัสผ่าน */
+#togglePasswordIcon {
+    font-size: 23px; 
+   /* color: #ff6f61;  สีไอคอนลูกตา */
+    transition: transform 0.3s ease; /* เพิ่มการเคลื่อนไหวเมื่อ hover */
+}
+
+/* เมื่อ hover ไอคอนลูกตา */
+.toggle-password:hover #togglePasswordIcon {
+    transform: scale(1.2); /* ขยายขนาดไอคอนลูกตาเมื่อ hover */
+}
+
+/* ครอบคลุมทั้ง input[type="text"] และ input[type="password"] */
+input[type="email"], input[type="password"], input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #7b7978;
+    margin-top: 2px; /* เพิ่มช่องว่างระหว่าง label และ input */
+    border-radius: 15px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* เมื่อ focus จะมีผลกับทั้ง input[type="text"] และ input[type="password"] */
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+    border-color: #0f0f0f;
+    
+    outline: none;
+}
+
+button {
+    background-color: #136f27;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    position: relative;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 17px;
+    color: #d9534f;
+    font-weight: bold;
+}

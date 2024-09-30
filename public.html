@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <title>โดยสารสาธารณะ</title>
+    <link rel="stylesheet" href="css/public.css">
+
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>โดยสารสาธารณะ</h1>
+        <div class="form-group">
+            <form id="travelForm" method="post" enctype="multipart/form-data">
+                <label for="travel_method">วิธีการเดินทาง:</label>
+                <select name="travel_method" id="travel_method">
+
+                    <option value="รถจักรยานยนต์รับจ้าง">รถจักรยานยนต์รับจ้าง</option>
+                    <option value="รถแท็กซี่">รถแท็กซี่</option>
+                    <option value="รถสามล้อรับจ้าง">รถสามล้อรับจ้าง</option>
+                    <option value="รถเมล์/โดยสารประจำทาง">รถเมล์/โดยสารประจำทาง</option>
+                    <option value="รถทัวร์">รถทัวร์</option>
+                    <option value="รถมินิบัส">รถมินิบัส</option>
+                    <option value="รถตู้โดยสาร">รถตู้โดยสาร</option>
+                    <option value="รถสองแถว">รถสองแถว</option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="vehicle_plate">ทะเบียนรถ:</label>
+            <input type="text" name="vehicle_plate" id="vehicle_plate" required pattern="^[0-9A-Za-z\u0E01-\u0E3A-]+$"
+                placeholder="เช่น 12-0542กรุงเทพ">
+        </div>
+
+        <div class="form-group">
+            <label for="route_number">สายที่/เลขข้างรถ:</label>
+            <input type="text" name="route_number" id="route_number" required pattern="^[0-9A-Za-z\u0E01-\u0E3A.\s-]+$"
+                placeholder="เช่น 26 ป.">
+        </div>
+
+        <div class="form-group">
+            <label for="driver_name">ชื่อพนักงานขับรถ:</label>
+            <input type="text" name="driver_name" id="driver_name" required pattern="^[\u0E00-\u0E7F\s.]+$"
+                title="กรุณากรอกเฉพาะอักษรไทย" placeholder="เช่น นายใจดี มากมาย">
+        </div>
+        <!--ไทย วรรค จุด และขีดกลาง-->
+
+        <div class="form-group">
+            <label for="driver_id">รหัสพนักงานขับรถ:</label>
+            <input type="text" name="driver_id" id="driver_id" required pattern="^[0-9]+$" title="กรุณากรอกเฉพาะตัวเลข"
+                placeholder="กรุณากรอกเฉพาะตัวเลข">
+        </div>
+        <div class="form-group">
+            <label for="pickup_dropoff">จุดต้นทาง-จุดปลายทาง:</label>
+            <input type="text" name="pickup_dropoff" id="pickup_dropoff" required placeholder="เช่น กรุงเทพ-พิษณุโลก">
+        </div>
+
+        <div class="form-group">
+            <label for="start_time">เวลาเริ่มเดินทาง:</label>
+            <input type="time" name="start_time" id="start_time" required>
+        </div>
+
+        <div class="form-group">
+            <label for="baggage_images">อัพโหลดรูปภาพสัมภาระ:</label>
+            <input type="file" name="baggage_images[]" id="baggage_images" accept="image/*" multiple required>
+        </div>
+
+        <div class="form-group">
+            <label for="driver_card_images">อัพโหลดรูปภาพบัตรพนักงานขับรถ:</label>
+            <input type="file" name="driver_card_images[]" id="driver_card_images" accept="image/*" multiple required>
+        </div>
+        <div class="form-group">
+            <label for="front_back_images">อัพโหลดรูปภาพป้ายหน้าหรือหลังรถ:</label>
+            <input type="file" name="front_back_images[]" id="front_back_images" accept="image/*" multiple required>
+        </div>
+
+        <div class="form-group">
+            <label for="ticket_images">อัพโหลดรูปภาพตั๋วรถ:</label>
+            <input type="file" name="ticket_images[]" id="ticket_images" accept="image/*" multiple required>
+        </div>
+
+        <div class="form-group">
+            <label for="atmosphere_images">อัพโหลดรูปบรรยากาศรอบๆ:</label>
+            <input type="file" name="atmosphere_images[]" id="atmosphere_images" accept="image/*" multiple required>
+        </div>
+
+        <div class="form-group">
+            <label for="atmosphere">บรรยากาศในการเดินทางหรืออื่นๆ:</label>
+            <textarea name="atmosphere" id="atmosphere" rows="4" placeholder="เช่น คนเยอะกว่าปกติ ฯลฯ"></textarea>
+        </div>
+
+        <p>วันที่ปัจจุบัน: <span id="current_date"></span></p>
+        <input type="hidden" name="date" id="date">
+
+        <button type="submit">บันทึก</button>
+
+        <a href="login.html" class="button">ย้อนกลับ</a>
+        </form>
+    </div>
+
+    <!-- ป๊อปอัพ -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p id="popupMessage"></p>
+            <button id="closePopup">ปิดหน้านี้</button>
+        </div>
+    </div>
+
+    <script>
+        function setCurrentDate() {
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0');
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const year = now.getFullYear();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            // รูปแบบที่จะแสดงใน UI
+            const displayDateString = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+            document.getElementById('current_date').textContent = displayDateString;
+
+            // รูปแบบที่จะเก็บลงในฐานข้อมูล
+            const databaseDateString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            document.getElementById('date').value = databaseDateString;
+        } setCurrentDate();
+
+
+        document.getElementById('travelForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // ป้องกันการส่งฟอร์มแบบปกติ
+
+            const formData = new FormData(event.target);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'public.php', true);
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // แสดงข้อความป๊อปอัพเมื่อข้อมูลส่งสำเร็จ
+                    const response = JSON.parse(xhr.responseText);
+                    document.getElementById('popupMessage').innerHTML = response.message;
+                    document.getElementById('popup').style.display = 'flex';
+                } else {
+                    alert('เกิดข้อผิดพลาดในการส่งข้อมูล' + xhr.status);
+                }
+            };
+
+            xhr.send(formData);
+        });
+
+        document.getElementById('closePopup').addEventListener('click', function () {
+            // ปิดป๊อปอัพ
+            document.getElementById('popup').style.display = 'none';
+
+            // เปลี่ยนเส้นทางไปยังหน้า login.html
+            window.location.href = 'login.html';
+        });
+
+        //เช้ครูปแบบ// เช็คและลบอักขระที่ไม่ตรงตามรูปแบบ
+        function restrictInputByPattern(input, pattern) {
+            input.addEventListener('input', function () {
+                let value = input.value;
+                let valid = value.match(pattern);
+                if (!valid) {
+                    input.value = value.replace(/[^ก-๙0-9\s.-]/g, '');
+                }
+            });
+        }
+
+        restrictInputByPattern(document.getElementById('vehicle_plate'), vehiclePlatePattern);
+        restrictInputByPattern(document.getElementById('route_number'), routeNumberPattern);
+        restrictInputByPattern(document.getElementById('driver_name'), driverNamePattern);
+        restrictInputByPattern(document.getElementById('driver_id'), driverIdPattern);
+
+
+
+    </script>
+</body>
+
+</html>

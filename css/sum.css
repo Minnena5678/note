@@ -1,0 +1,275 @@
+/* ตั้งค่าเริ่มต้น */
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #abbfdd;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Container หลัก */
+
+
+/* หัวข้อหลัก */
+h1 {
+    font-size: 3rem;
+    color: #171515;
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    width: 290px;
+    height: 6px;
+    background-color: #f1f44a;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50px;
+}
+.custom-title {
+    font-size: 5px; /* ปรับขนาดตัวอักษรที่ต้องการ เช่น 18px */
+    
+    position: relative; /* เพื่อให้สามารถจัดตำแหน่งลูกเล่นได้ */
+    padding-bottom: 12px; /* เพิ่มพื้นที่ด้านล่างเพื่อให้ขีดไม่ชนกับข้อความ */
+}
+
+.custom-title::before {
+    content: '';
+    position: absolute;
+    width: 100%; /* ขยายให้เต็มความกว้าง */
+    height: 2px; /* ความสูงของขีด */
+    background-color: #ff9800; /* เปลี่ยนเป็นสีที่ต้องการ */
+    top: 100%; /* วางไว้ที่ด้านล่างของ <h2> */
+    left: 0; /* จัดตำแหน่งเริ่มต้นที่ด้านซ้าย */
+    margin-top: 8px; /* ระยะห่างระหว่างขีดและข้อความ */
+}
+
+/* ป้ายกำกับและปุ่ม */
+label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #777;
+    
+    margin-bottom: 12px;
+    display: block;
+}
+
+input[type="date"] {
+    font-size:15px;
+    
+    padding: 12px;
+    width: 100%;
+    max-width: 350px;
+    border: 2px solid #777;
+    border-radius: 20px;
+    outline: none;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+input[type="date"]:focus {
+    border-color: #f1e70e;
+    background-color: #f9f8f9;
+}
+
+/* ปุ่ม */
+.button {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin: 10px 0;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.button:nth-of-type(1) {
+    background-color: #f1e70e ; /* สีพื้นหลัง */
+    color: #080808; /* สีตัวอักษร */
+}
+.button:nth-of-type(2) {
+    background-color: #4CAF50; /* สีพื้นหลัง */
+    color: #080808; /* สีตัวอักษร */
+}.button:nth-of-type(3) {
+    background-color: #f44336; /* สีพื้นหลัง */
+    color: rgb(0, 0, 0); /* สีตัวอักษร */
+}
+
+.pagination {
+    display: flex; /* ใช้ flexbox สำหรับจัดตำแหน่ง */
+    justify-content: space-between; /* จัดให้ปุ่มอยู่ชิดขอบ */
+    margin: 10px 0; /* ขอบบนและล่างของ pagination */
+}
+
+/* CSS สำหรับปุ่มหน้าถัดไป */
+#nextButton {
+   margin-left: 5px;
+    background-color: #4c6baf; /* สีพื้นหลัง */
+    color: white; /* สีตัวอักษร */
+}
+/* CSS สำหรับปุ่มย้อนกลับ */
+#prevButton {
+    background-color:  #4c6baf; /* สีพื้นหลัง */
+    color: white; /* สีตัวอักษร */
+}
+
+/* ข้อมูลการเดินทาง */
+/* ปรับแต่งเฉพาะสำหรับ div ที่มี id เป็น data */
+#data {
+    
+    border: 6px solid #ffffff; /* เพิ่มขอบให้ชัดเจน */
+    border-radius: 25px; /* ทำให้ขอบโค้ง */
+    padding: 30px; /* เพิ่มการเว้นขอบใน */
+    margin-top: 30px; /* เพิ่มช่องว่างด้านบน */
+   
+    transition: all 0.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+}
+
+
+/* ปรับแต่ง h2 ภายใน #data */
+#data h2 {
+    color: rgba(0, 0, 0, 0.85); /* เปลี่ยนสีหัวข้อใน div */
+    font-size: 2.2rem; /* ขนาดของหัวข้อ */
+    margin-bottom: 20px; /* เพิ่มช่องว่างด้านล่าง */
+    text-align: center; /* จัดหัวข้อให้อยู่ตรงกลาง */
+}
+
+/* ปรับแต่งข้อความภายใน #data */
+#data p {
+    font-size: 1.2rem;
+    color: #080808;
+    line-height: 1.8; /* เพิ่มระยะห่างระหว่างบรรทัด */
+    margin-bottom: 15px; /* เว้นระยะห่างระหว่างย่อหน้า */
+}
+
+/* ปรับแต่งภาพภายใน #data */
+#data img {
+    border-radius: 15px; /* ปรับขอบภาพให้โค้งมน */
+    max-width: 100%; /* ทำให้ภาพแสดงผลตามขนาดของ container */
+    margin-top: 15px; /* เว้นระยะห่างด้านบนของภาพ */
+    
+    transition: transform 0.3s ease; /* ทำให้ภาพมีการเปลี่ยนแปลงแบบนุ่มนวล */
+}
+
+/* เพิ่มเอฟเฟกต์ภาพเมื่อโฮเวอร์ */
+#data img:hover {
+    transform: scale(1.05); /* ขยายภาพเมื่อโฮเวอร์ */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* เพิ่มเงา */
+}
+
+/* โมดอลแสดงภาพ */
+#modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+#modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* กิมมิก: ลายเส้นขอบ */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    
+    z-index: -1;
+    border-radius: 25px;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+}
+
+.container:hover::before {
+    opacity: 1;
+}
+
+
+/* สำหรับอุปกรณ์พกพา */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+        border-radius: 25px;
+    }
+
+    .data {
+        padding: 15px;
+    }
+
+    .data h2 {
+        font-size: 1.6rem;
+    }
+
+    .data p {
+        font-size: 1rem;
+    }
+}
+
+/* สำหรับแท็บเล็ต */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .button {
+        font-size: 1.1rem;
+        padding: 12px 18px;
+    }
+
+    .data {
+        padding: 20px;
+    }
+
+    .data h2 {
+        font-size: 1.8rem;
+    }
+
+    .data p {
+        font-size: 1.1rem;
+    }
+}

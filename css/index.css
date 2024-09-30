@@ -1,0 +1,153 @@
+
+* {
+    box-sizing: border-box; /* ทำให้การคำนวณขนาดรวมขอบและ padding */
+}
+/* Style สำหรับฟอร์ม */  
+#handleSubmit ,#handleLogin {
+    max-width: 400px; /* จำกัดขนาดฟอร์มไม่ให้กว้างเกินไป */
+    margin: 0 auto; /* ทำให้ฟอร์มอยู่ตรงกลาง */
+    background-color: rgba(255, 255, 255, 0.9); /* สีพื้นหลังฟอร์มโปร่งใส */
+    border-radius: 30px; /* มุมของฟอร์มมีความโค้งมนมากขึ้น */
+    padding: 20px; /* เพิ่ม Padding รอบๆ ฟอร์ม */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2); /* เงาให้ความรู้สึกลอยตัว */
+}
+
+/* Style สำหรับ h1 */
+h1 {
+    font-size: 32px; 
+    color: #06090c; /* เปลี่ยนสีตัวอักษรให้สดใส */
+    margin-bottom: 20px; 
+    font-weight: 700; 
+    letter-spacing: 4px; 
+    text-transform: uppercase; 
+    text-align: center; 
+    text-shadow: 2px 2px 5px rgba(147, 145, 145, 0.2); /* เพิ่มเงาให้กับตัวอักษร */
+}
+
+/* Style สำหรับปุ่ม */
+button {
+    width:50%; 
+    padding: 10px; /* เพิ่ม Padding เพื่อให้ปุ่มมีขนาดใหญ่ขึ้น */
+    background-color:#3aa464 ; /* สีพื้นหลังปุ่มน่ารัก */
+    /*border: #7BAE6A 2px solid#7BAE6A;  สีขอบปุ่มสดใส */
+    border-radius: 50px; 
+    color: #fff; 
+    font-size: 18px; 
+    font-weight: bold; 
+    letter-spacing:2px; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+    box-shadow: 0 10px 25px rgb(242 238 238 / 1%); /* เงาให้ดูเหมือนฟองสบู่ */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+    margin-top: 15px; 
+    max-width: 400px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block; 
+}
+
+/* เมื่อ hover ปุ่ม จะเปลี่ยนสีพื้นหลังและขนาด */
+button:hover {
+    background-color:  #397D54; /* สีพื้นหลังเปลี่ยนเมื่อ hover */
+    transform: scale(1.05); /* ขยายขนาดและหมุนเมื่อ hover */
+}
+
+/* สำหรับลิงก์ไปยังหน้าล็อกอิน */
+a.button ,a.button1 {
+    width: 45%; 
+    padding: 10px; /* เพิ่ม Padding ให้เหมือนปุ่ม */
+    margin-top: 10px; 
+    background-color: #C084CC; /* สีพื้นหลังสดใส */
+    color: #fffefe; /* สีตัวอักษรเข้ม */
+    border-radius: 50px; 
+     /*border: 2px solid #ffa500; ขอบสีส้ม */
+    text-align: center; 
+    text-decoration: none; 
+    font-size: 18px; 
+    font-weight: bold; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    cursor: pointer; 
+    box-shadow: 0 10px 25px rgba(242, 238, 238, 0.15); /* เงาให้ดูเหมือนฟองสบู่ */
+    transition: transform 0.3s ease, background-color 0.3s ease; 
+    max-width: 400px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block; 
+}
+
+/* เมื่อ hover ลิงก์จะเปลี่ยนสีพื้นหลังและขยายขนาด */
+a.button , a.button1:hover {
+    background-color: #BC8FD0; /* สีพื้นหลังเปลี่ยนเมื่อ hover */
+    transform: scale(1.05) rotate(1deg); /* ขยายขนาดและหมุนเมื่อ hover */
+}
+
+/* สำหรับระยะห่างของ input ภายใน form-group */
+.form-group input {
+    width: 100%; 
+    padding: 12px; 
+    box-sizing: border-box; 
+    border: 2px solid #564d31; /* สีขอบสดใส */
+    border-radius: 50px; 
+    background-color: #fff; 
+    font-size: 20px; 
+    color: #140672; 
+    transition: box-shadow 0.3s ease, transform 0.2s ease; 
+    box-shadow: 0 0px 60px rgb(206 177 141 / 20%); /* เงาที่ทำให้รู้สึกเหมือนฟองสบู่ */
+}
+
+/* เพิ่มเงาและเปลี่ยนขนาดเมื่อ hover */
+.form-group input:hover {
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3); 
+    transform: scale(1.02); 
+}
+
+/* เพิ่มการออกแบบเมื่อ input มีค่า */
+.form-group input:focus {
+    outline: none; 
+    border-color: #fbe730; /* สีขอบเมื่อ focus */
+    box-shadow: 0 0 20px rgba(210, 194, 49, 0.5); 
+}
+
+/* สำหรับจัดการระยะห่างของ label */
+.form-group label  {
+    display: block;
+    margin-top:10px;
+    margin-bottom: 5px; 
+    color: #0f0e0e; 
+    font-weight: 600; 
+}
+.route1 {
+    display: block;
+    margin-top:10px;
+    margin-bottom: 5px; 
+    color: #363434; 
+    font-weight: 600; 
+}
+
+/* จัดตำแหน่งไอคอนลูกตาสำหรับช่องรหัสผ่าน */
+.password-wrapper {
+    position: relative;
+}
+
+/* ตำแหน่งของไอคอน toggle (ลูกตา) */
+.toggle-password {
+    position: absolute;
+    top: 50%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    cursor: pointer; 
+}
+
+/* ขนาดไอคอนลูกตาในช่องรหัสผ่าน */
+#togglePasswordIcon {
+    font-size: 23px; 
+   /* color: #ff6f61;  สีไอคอนลูกตา */
+    transition: transform 0.3s ease; /* เพิ่มการเคลื่อนไหวเมื่อ hover */
+}
+
+/* เมื่อ hover ไอคอนลูกตา */
+.toggle-password:hover #togglePasswordIcon {
+    transform: scale(1.2); /* ขยายขนาดไอคอนลูกตาเมื่อ hover */
+}
+

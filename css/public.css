@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box; /* ทำให้การคำนวณขนาดรวมขอบและ padding */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    backdrop-filter: blur(15px);
+    position: relative;
+    display: block;
+    border: 7px dashed #f4e61b; /* เส้นขอบที่น่ารัก */
+    background-color: #f9f9f9; /* พื้นหลังเบาๆ */
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px; /* ขนาดตัวอักษรที่ใหญ่ขึ้น */
+    color: #000000; /* เปลี่ยนสีตัวอักษรให้เข้มขึ้น */
+    text-shadow: 2px 2px 5px rgb(170, 164, 164, 0.34); /* เงาที่เด่นชัด */
+    margin-bottom: 20px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+.form-group {
+    margin-bottom: 20px; /* เพิ่มระยะห่างระหว่างกลุ่มฟอร์ม */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #363435; /* สีของข้อความ label */
+}
+
+input, select, textarea {
+    outline: none;
+    width: 100%; /* ทำให้กว้าง 100% ของพื้นที่ที่กำหนด */
+    padding: 15px; /* ขนาดการ padding ที่ใหญ่ขึ้น */
+    border: 3px solid #554e50; /* สีขอบที่สดใส */
+    border-radius: 30px; /* เพิ่มความมนให้กับมุม */
+    transition: all 0.3s ease;
+    background-color: #fffefe; /* สีพื้นหลังที่ดูน่ารัก */
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #4F80C0; /* สีขอบเมื่อโฟกัส */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* เพิ่มความเด่นเมื่อโฟกัส */
+}
+
+button {
+    width:35%; 
+    padding: 8px 25px; /* ขนาดการ padding ที่ใหญ่ขึ้น */
+    border: none;
+    border-radius: 30px; /* เพิ่มความมนให้กับมุม */
+    background-color: #089952; /* สีพื้นหลังของปุ่ม */
+    color: white;
+    font-size: 18px;  /* ขนาดตัวอักษรที่ใหญ่ขึ้น */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s; /* เพิ่มเอฟเฟกต์เมื่อกด */
+    display: block;
+    font-weight: bold; 
+    margin: 20px auto; /* จัดกลาง */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เงาที่เด่นชัด */
+}
+
+
+a.button  {
+    width:35%; 
+    padding: 8px 10px; /* ขนาดการ padding ที่ใหญ่ขึ้น */
+    border: none;
+    border-radius: 30px; /* เพิ่มความมนให้กับมุม */
+    background-color: #e21f39; /* สีพื้นหลังของปุ่ม */
+    color: white;
+    font-size: 18px;  /* ขนาดตัวอักษรที่ใหญ่ขึ้น */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s; /* เพิ่มเอฟเฟกต์เมื่อกด */
+    font-weight: bold; 
+    margin: 20px auto; /* จัดกลาง */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* เงาที่เด่นชัด */
+    text-align: center; 
+    text-decoration: none; 
+    max-width: 400px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block; 
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: fadeIn 0.5s; /* เอฟเฟกต์การเข้า */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 20px; /* ขอบมน */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    border: 5px dashed #e381a2; /* ขอบดาช */
+    transform: scale(0.95);
+    animation: scaleUp 0.3s forwards; /* เอฟเฟกต์การขยาย */
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.95);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+#closePopup {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px; /* ขอบมน */
+    background-color: #db2a65;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0; /* ระยะห่างด้านบน */
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+
+/* เพิ่มเอฟเฟกต์ข้อความในป๊อปอัพ */
+.popup-content p {
+    font-size: 1.2rem; /* ขนาดข้อความ */
+    color: #333; /* สีข้อความ */
+    text-align: center; /* จัดกลางข้อความ */
+    margin: 10px 0;
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โดยสารส่วนตัวและรถไฟ</title>
+    <link rel="stylesheet" href="css/private.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>โดยสารส่วนตัวและรถไฟ</h1>
+        <form id="travelForm" method="post" enctype="multipart/form-data">
+            <label for="travel_method">วิธีการเดินทาง:</label>
+            <select name="travel_method" id="travel_method">
+                <option value="รถยนต์ที่นั่ง">รถยนต์ที่นั่ง</option>
+                <option value="รถจักรยานยนต์">รถจักรยานยนต์</option>
+                <option value="รถกระบะ/รถบรรทุก">รถกระบะ/รถบรรทุก</option>
+                <option value="รถตู้">รถตู้</option>
+                <option value="บริการที่เรียกจากแอพพลิเคชั่น">บริการที่เรียกจากแอพพลิเคชั่น</option>
+                <option value="รถไฟ">รถไฟ</option>
+            </select>
+
+            <label for="app_method">แอพพลิเคชั่น:</label>
+            <select name="app_method" id="app_method">
+                <option></option>
+                <option value="Grab">Grab</option>
+                <option value="Line Man">Line Man</option>
+                <option value="Bolt">Bolt</option>
+                <option value="Robinhood">Robinhood</option>
+                <option value="Bonku">Bonku</option>
+                <option value="Other">อื่นๆ</option>
+            </select>
+
+            <label for="train">ประเภทขบวนรถ:</label>
+            <select name="train" id="train">
+                <option value></option>
+                <option value="ขบวนด่วนพิเศษ">ขบวนด่วนพิเศษ</option>
+                <option value="ขบวนรถด่วน">ขบวนรถด่วน</option>
+                <option value="ขบวนรถเร็ว">ขบวนรถเร็ว</option>
+                <option value="ขบวนรถธรรมดา">ขบวนรถธรรมดา</option>
+                <option value="ขบวนรถชานเมือง">ขบวนรถชานเมือง</option>
+                <option value="ขบวนรถท้องถิ่น">ขบวนรถท้องถิ่น</option>
+                <option value="ขบวนรถท่องเที่ยว">ขบวนรถท่องเที่ยว</option>
+            </select>
+
+            <label for="train_number">เลขขบวน:</label>
+            <input type="text" name="train_number" id="train_number" pattern="^[0-9]+$" title="กรุณากรอกเฉพาะตัวเลข"
+                placeholder="กรุณากรอกเฉพาะตัวเลข">
+
+            <label for="seat_class">ประเภทชั้นที่นั่ง:</label>
+            <input type="text" name="seat_class" id="seat_class" pattern="^[\u0E00-\u0E7F0-9\s.-]+$"
+                title="กรุณากรอกเฉพาะตัวเลขและอักษรไทย" placeholder="เช่น ชั้น1 รถนอนปรับอากาศ">
+            <!-- เลข อิ้ง จุด วรรค ขีดกลาง-->
+
+            <label for="seat_number">หมายเลขที่นั่ง:</label>
+            <input type="text" name="seat_number" id="seat_number" pattern="^[0-9A-Za-z]+$"
+                placeholder="เช่น 19หรือ13D">
+            <!-- เลขและอิ้ง -->
+
+            <label for="vehicle_plate">ทะเบียนรถ:</label>
+            <input type="text" name="vehicle_plate" id="vehicle_plate" pattern="^[0-9A-Za-z\u0E01-\u0E3A-]+$"
+                placeholder="เช่น 1กทพิจิตร" required>
+            <!-- เลขและอิ้ง ไทย วรรกลาง จุด -->
+
+            <label for="vehicle_color">สีรถหรือยี่ห้อ:</label>
+            <input type="text" name="vehicle_color" id="vehicle_color" pattern="^[\u0E00-\u0E7Fa-zA-Z]+$"
+                placeholder="เช่น ขาวดำ/Honda " title="กรุณากรอกเฉพาะอักษรไทยหรือภาษาอังกฤษ">
+
+            <label for="pickup_dropoff">จุดต้นทาง-จุดปลายทาง:</label>
+            <input type="text" name="pickup_dropoff" id="pickup_dropoff" placeholder="เช่น กรุงเทพ-พิษณุโลก" required>
+
+            <label for="start_time">เวลาเริ่มเดินทาง:</label>
+            <input type="time" name="start_time" id="start_time" required>
+
+            <label for="baggage_images">อัพโหลดรูปภาพสัมภาระ:</label>
+            <input type="file" name="baggage_images[]" id="baggage_images" accept="image/*">
+
+            <label for="capture_images">อัพโหลดรูปภาพหน้าจอ
+                (ให้เห็นรายละเอียด):</label>
+            <input type="file" name="capture_images[]" id="capture_images" accept="image/*">
+
+            <label for="atmosphere_images">อัพโหลดรูปบรรยากาศรอบๆ/บุคคลที่เดินทางด้วย:</label>
+            <input type="file" name="atmosphere_images[]" id="atmosphere_images" accept="image/*">
+
+            <label for="ticket_images">อัพโหลดรูปภาพตั๋วรถ:</label>
+            <input type="file" name="ticket_images[]" id="ticket_images" accept="image/*">
+
+            <label for="atmosphere">บรรยากาศในการเดินทางหรืออื่นๆ:</label>
+            <textarea name="atmosphere" id="atmosphere" rows="4" placeholder="เช่น คนเยอะกว่าปกติ ฯลฯ"></textarea>
+
+            <p>วันที่ปัจจุบัน: <span id="current_date"></span></p>
+            <input type="hidden" name="date" id="date" value>
+
+            <button type="submit">บันทึก</button>
+
+            <a href="login.html" class="button">ย้อนกลับ</a>
+        </form>
+    </div>
+    <div id="popup" class="popup" style="display: none;">
+        <div class="popup-content">
+            <p id="popupMessage">'🎉 บันทึกการเดินทางสำเร็จ 🎉</p>
+            <button id="closePopup">ปิดหน้านี้</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var travelMethod = document.getElementById('travel_method');
+            var appFields = ['app_method', 'route', 'start_time', 'baggage_images', 'capture_images', 'atmosphere'];
+            var trainFields = ['train', 'train_number', 'seat_class', 'seat_number', 'start_time', 'atmosphere_images', 'baggage_images', 'ticket_images', 'atmosphere'];
+            var vehicleFields = ['vehicle_plate', 'vehicle_color', 'pickup_dropoff', 'start_time', 'atmosphere_images', 'baggage_images', 'atmosphere'];
+
+            var allFields = [
+                'vehicle_plate', 'vehicle_color', 'route', 'start_time', 'atmosphere_images', 'baggage_images',
+                'app_method', 'capture_images', 'train', 'train_number', 'seat_class', 'seat_number', 'ticket_images'
+            ];
+
+            function toggleFields() {
+                var selectedMethod = travelMethod.value.trim();
+                hideFields(allFields);
+
+                if (selectedMethod === 'บริการที่เรียกจากแอพพลิเคชั่น') {
+                    showFields(appFields);
+                } else if (selectedMethod === 'รถไฟ') {
+                    showFields(trainFields);
+                } else if (selectedMethod === 'รถยนต์ที่นั่ง' || selectedMethod === 'รถจักรยานยนต์' || selectedMethod === 'รถกระบะ/รถบรรทุก' || selectedMethod === 'รถตู้') {
+                    showFields(vehicleFields);
+                }
+            }
+
+            function showFields(fields) {
+                fields.forEach(function (field) {
+                    var label = document.querySelector(`label[for=${field}]`);
+                    var input = document.getElementById(field);
+                    if (label && input) {
+                        label.style.display = 'block';
+                        input.style.display = 'block';
+                    }
+                });
+            }
+
+            function hideFields(fields) {
+                fields.forEach(function (field) {
+                    var label = document.querySelector(`label[for=${field}]`);
+                    var input = document.getElementById(field);
+                    if (label && input) {
+                        label.style.display = 'none';
+                        input.style.display = 'none';
+                        resetFieldValue(input);
+                    }
+                });
+            }
+
+            function resetFieldValue(input) {
+                if (input.type === 'text' || input.type === 'hidden') {
+                    input.value = '';
+                } else if (input.type === 'file') {
+                    input.value = '';
+                }
+            }
+
+            travelMethod.addEventListener('change', toggleFields);
+            toggleFields();
+            //เวลาเก็บ00:00:00 และ วันที่
+            var now = new Date();
+            var options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            };
+            document.getElementById('current_date').textContent = now.toLocaleString('th-TH', options);
+            document.getElementById('date').value = now.toISOString();
+
+
+            var popup = document.getElementById('popup');
+            var popupMessage = document.getElementById('popupMessage');
+            var closePopup = document.getElementById('closePopup');
+
+            //ข้อความในป๊อปอัพ หลังกดส่ง
+            document.getElementById('travelForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+                fetch('private.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        popupMessage.innerHTML = data.message || '🎉 บันทึกการเดินทางสำเร็จ 🎉';
+                        popup.style.display = 'flex'; // เปลี่ยนเป็น flex
+                        this.reset();
+                    })
+                    .catch(error => {
+                        popupMessage.innerHTML = 'เกิดข้อผิดพลาดในการส่งข้อมูล: ' + error.message;
+                        popup.style.display = 'flex'; // เปลี่ยนเป็น flex
+                    });
+            });
+
+            closePopup.addEventListener('click', function () {
+                popup.style.display = 'none';
+                window.location.href = 'login.html';
+            });
+
+            //เช้ครูปแบบ
+            function restrictInputByPattern(input, pattern) {
+                input.addEventListener('input', function () {
+                    let value = input.value;
+                    let valid = value.match(pattern);
+                    if (!valid) {
+                        input.value = value.replace(/[^ก-๙0-9\s.-]/g, '');
+                    }
+                });
+            }
+
+            // กำหนดฟังก์ชันสำหรับแต่ละ input field ที่มี pattern 
+            restrictInputByPattern(document.getElementById('seat_class'), /^[\u0E00-\u0E7F0-9\s.-]+$/);
+            restrictInputByPattern(document.getElementById('vehicle_plate'), /^[0-9A-Za-z\u0E01-\u0E3A-]+$/);
+            restrictInputByPattern(document.getElementById('vehicle_color'), /^[\u0E00-\u0E7Fa-zA-Z]+$/);
+
+            // ตัวอย่างอื่นๆ สำหรับการกรอกเฉพาะตัวเลข 
+            restrictInputByPattern(document.getElementById('train_number'), /^[0-9]+$/);
+            restrictInputByPattern(document.getElementById('seat_number'), /^[0-9A-Za-z]+$/);
+
+        });
+    </script>
+</body>
+
+</html>
